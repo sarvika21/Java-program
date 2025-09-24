@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+class Vehicle {
+    String brand;
+    int speed;
+
+    public Vehicle(String brand, int speed) {
+        this.brand = brand;
+        this.speed = speed;
+    }
+
+    public void displayInfo() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Speed: " + speed + " km/h");
+    }
+}
+
+class Car extends Vehicle {
+    int seats;
+
+    public Car(String brand, int speed, int seats) {
+        super(brand, speed);
+        this.seats = seats;
+    }
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Seats: " + seats);
+    }
+}
+
+class Bike extends Vehicle {
+    String type; 
+
+    public Bike(String brand, int speed, String type) {
+        super(brand, speed);
+        this.type = type;
+    }
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Type: " + type);
+    }
+}
+public class VehicleManagement {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter vehicle type (Car/Bike): ");
+        String choice = sc.nextLine();
+
+        if (choice.equalsIgnoreCase("Car")) {
+            System.out.print("Enter Car Brand: ");
+            String brand = sc.nextLine();
+
+            System.out.print("Enter Car Speed: ");
+            int speed = sc.nextInt();
+
+            System.out.print("Enter Number of Seats: ");
+            int seats = sc.nextInt();
+
+            Car car = new Car(brand, speed, seats);
+            System.out.println("\nCar Details:");
+            car.displayInfo();
+
+        } else if (choice.equalsIgnoreCase("Bike")) {
+            System.out.print("Enter Bike Brand: ");
+            String brand = sc.nextLine();
+
+            System.out.print("Enter Bike Speed: ");
+            int speed = sc.nextInt();
+            sc.nextLine(); 
+
+            System.out.print("Enter Bike Type (Sports/Cruiser/etc): ");
+            String type = sc.nextLine();
+
+            Bike bike = new Bike(brand, speed, type);
+            System.out.println("\nBike Details:");
+            bike.displayInfo();
+
+        } else {
+            System.out.println("Invalid choice!");
+        }
+        sc.close();
+    }
+}
