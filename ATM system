@@ -30,13 +30,12 @@ class Account {
 
 public class ATMSystem {
     public static void main(String[] args) {
-        // Create one account
         Account acc = new Account("1001", "Sarvika", 1000.0);
 
         acc.checkBalance();
         acc.deposit(500);
         acc.checkBalance();
-        acc.withdraw(2000); // will show insufficient
+        acc.withdraw(2000); 
         acc.withdraw(700);
         acc.checkBalance();
     }
