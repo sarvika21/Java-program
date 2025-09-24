@@ -1,0 +1,72 @@
+package company;
+
+public class Employee {
+    private int empId;          
+    public String name;    
+    protected double salary;  
+
+    public void setDetails(int id, String n, double s) {
+        empId = id;
+        name = n;
+        salary = s;
+    }
+
+    public void display() {
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+}
+package office;
+
+import company.Employee; // importing Employee from another package
+import java.util.Scanner;
+
+public class Manager extends Employee {
+    private String department;
+
+    public void setDepartment(String dept) {
+        department = dept;
+    }
+
+    public void showManager() {
+        // name is public → accessible
+        // salary is protected → accessible since Manager extends Employee
+        System.out.println("Manager Name: " + name);
+        System.out.println("Manager Salary: " + salary);
+        System.out.println("Department: " + department);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Manager m = new Manager();
+
+        System.out.print("Enter Employee ID: ");
+        int id = sc.nextInt();
+        sc.nextLine(); // consume newline
+
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Salary: ");
+        double sal = sc.nextDouble();
+        sc.nextLine();
+
+        System.out.print("Enter Department: ");
+        String dept = sc.nextLine();
+
+        // Setting details
+        m.setDetails(id, name, sal);
+        m.setDepartment(dept);
+
+        System.out.println("\n--- Employee Info ---");
+        m.display();
+
+        System.out.println("\n--- Manager Info ---");
+        m.showManager();
+
+        sc.close();
+    }
+}
+
